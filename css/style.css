@@ -1,0 +1,434 @@
+/* ===== VARIÁVEIS ===== */
+:root {
+    --vermelho: #c41e3a;
+    --vermelho-escuro: #a01830;
+    --verde: #165b33;
+    --verde-claro: #1e7a46;
+    --dourado: #f5c542;
+    --dourado-claro: #ffd966;
+    --branco: #ffffff;
+    --branco-neve: #f8f9fa;
+    --cinza-claro: #e9ecef;
+    --texto: #2d3436;
+    --texto-claro: #636e72;
+    --sombra: rgba(0, 0, 0, 0.1);
+    --sombra-forte: rgba(0, 0, 0, 0.2);
+}
+
+/* ===== RESET E BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, var(--verde) 0%, var(--verde-claro) 50%, var(--vermelho) 100%);
+    min-height: 100vh;
+    color: var(--texto);
+    overflow-x: hidden;
+}
+
+/* ===== FLOCOS DE NEVE ===== */
+.snowflakes {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1000;
+    overflow: hidden;
+}
+
+.snowflake {
+    position: absolute;
+    top: -10%;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.5rem;
+    animation: fall linear infinite;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+.snowflake:nth-child(1) { left: 5%; animation-duration: 10s; animation-delay: 0s; font-size: 1.2rem; }
+.snowflake:nth-child(2) { left: 15%; animation-duration: 12s; animation-delay: 1s; font-size: 1.8rem; }
+.snowflake:nth-child(3) { left: 25%; animation-duration: 8s; animation-delay: 2s; font-size: 1rem; }
+.snowflake:nth-child(4) { left: 35%; animation-duration: 14s; animation-delay: 0.5s; font-size: 1.5rem; }
+.snowflake:nth-child(5) { left: 45%; animation-duration: 9s; animation-delay: 3s; font-size: 2rem; }
+.snowflake:nth-child(6) { left: 55%; animation-duration: 11s; animation-delay: 1.5s; font-size: 1.3rem; }
+.snowflake:nth-child(7) { left: 65%; animation-duration: 13s; animation-delay: 2.5s; font-size: 1.7rem; }
+.snowflake:nth-child(8) { left: 75%; animation-duration: 10s; animation-delay: 0.8s; font-size: 1.1rem; }
+.snowflake:nth-child(9) { left: 85%; animation-duration: 15s; animation-delay: 3.5s; font-size: 1.9rem; }
+.snowflake:nth-child(10) { left: 95%; animation-duration: 7s; animation-delay: 1.2s; font-size: 1.4rem; }
+
+@keyframes fall {
+    0% {
+        transform: translateY(-10vh) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0.3;
+    }
+}
+
+/* ===== CONTAINER ===== */
+.container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* ===== HEADER ===== */
+.header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.logo-img {
+    width: 80px;
+    height: auto;
+    filter: drop-shadow(0 4px 8px var(--sombra-forte));
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.logo-text {
+    font-family: 'Mountains of Christmas', cursive;
+    font-size: 4rem;
+    font-weight: 700;
+    color: var(--branco);
+    text-shadow: 
+        3px 3px 0 var(--vermelho-escuro),
+        -1px -1px 0 var(--vermelho-escuro),
+        1px -1px 0 var(--vermelho-escuro),
+        -1px 1px 0 var(--vermelho-escuro),
+        0 4px 8px var(--sombra-forte);
+    letter-spacing: 2px;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: var(--branco);
+    text-shadow: 0 2px 4px var(--sombra);
+    font-weight: 300;
+}
+
+/* ===== CARD ===== */
+.card {
+    background: var(--branco);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 10px 40px var(--sombra-forte);
+    position: relative;
+    overflow: hidden;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, var(--vermelho), var(--dourado), var(--verde));
+}
+
+.card-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.card-header .emoji {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.card-header h2 {
+    font-family: 'Mountains of Christmas', cursive;
+    font-size: 2rem;
+    color: var(--vermelho);
+    font-weight: 700;
+}
+
+.description {
+    text-align: center;
+    color: var(--texto-claro);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+/* ===== FORMULÁRIO ===== */
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-weight: 500;
+    color: var(--texto);
+    font-size: 0.95rem;
+}
+
+.form-group input {
+    padding: 1rem 1.2rem;
+    border: 2px solid var(--cinza-claro);
+    border-radius: 12px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: all 0.3s ease;
+    background: var(--branco-neve);
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--verde);
+    box-shadow: 0 0 0 4px rgba(30, 122, 70, 0.1);
+    background: var(--branco);
+}
+
+.form-group input::placeholder {
+    color: var(--texto-claro);
+}
+
+/* ===== BOTÃO ===== */
+.btn-submit {
+    background: linear-gradient(135deg, var(--vermelho) 0%, var(--vermelho-escuro) 100%);
+    color: var(--branco);
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(196, 30, 58, 0.3);
+    margin-top: 0.5rem;
+    text-decoration: none;
+    text-align: center;
+    display: block;
+}
+
+.btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(196, 30, 58, 0.4);
+}
+
+.btn-submit:active {
+    transform: translateY(0);
+}
+
+.btn-submit:disabled {
+    background: var(--cinza-claro);
+    color: var(--texto-claro);
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+.btn-sortear {
+    background: linear-gradient(135deg, var(--verde) 0%, var(--verde-claro) 100%);
+    box-shadow: 0 4px 15px rgba(22, 91, 51, 0.3);
+}
+
+.btn-sortear:hover {
+    box-shadow: 0 6px 20px rgba(22, 91, 51, 0.4);
+}
+
+/* ===== MENSAGENS ===== */
+.mensagem {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 1rem 1.2rem;
+    border-radius: 12px;
+    margin-top: 1.5rem;
+}
+
+.mensagem span {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.mensagem p {
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+.mensagem.sucesso {
+    background: rgba(22, 91, 51, 0.1);
+    border: 1px solid var(--verde);
+    color: var(--verde);
+}
+
+.mensagem.erro {
+    background: rgba(196, 30, 58, 0.1);
+    border: 1px solid var(--vermelho);
+    color: var(--vermelho);
+}
+
+/* ===== ADMIN - PARTICIPANTES ===== */
+.admin-card {
+    max-width: 600px;
+}
+
+.participantes-section {
+    margin-bottom: 1.5rem;
+}
+
+.participantes-section h3 {
+    font-size: 1.1rem;
+    color: var(--texto);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--cinza-claro);
+}
+
+.lista-participantes {
+    max-height: 300px;
+    overflow-y: auto;
+    background: var(--branco-neve);
+    border-radius: 12px;
+    padding: 0.5rem;
+}
+
+.participante-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 1rem;
+    background: var(--branco);
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    box-shadow: 0 2px 4px var(--sombra);
+}
+
+.participante-item:last-child {
+    margin-bottom: 0;
+}
+
+.participante-nome {
+    font-weight: 500;
+    color: var(--texto);
+}
+
+.participante-email {
+    font-size: 0.85rem;
+    color: var(--texto-claro);
+}
+
+.loading {
+    text-align: center;
+    color: var(--texto-claro);
+    padding: 2rem;
+}
+
+/* ===== ADMIN - AÇÕES ===== */
+.acoes-section {
+    margin-bottom: 1.5rem;
+}
+
+.aviso {
+    font-size: 0.85rem;
+    color: var(--texto-claro);
+    text-align: center;
+    margin-top: 1rem;
+    padding: 0.8rem;
+    background: rgba(245, 197, 66, 0.2);
+    border-radius: 8px;
+    border: 1px solid var(--dourado);
+}
+
+/* ===== ADMIN - RESULTADO ===== */
+.resultado-section {
+    background: rgba(22, 91, 51, 0.05);
+    border: 1px solid var(--verde);
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.resultado-section h3 {
+    color: var(--verde);
+    margin-bottom: 0.5rem;
+}
+
+.resultado-section p {
+    color: var(--texto-claro);
+    margin-bottom: 1rem;
+}
+
+.resultado-lista {
+    text-align: left;
+    font-size: 0.9rem;
+}
+
+.resultado-item {
+    padding: 0.5rem;
+    border-bottom: 1px dashed var(--cinza-claro);
+}
+
+.resultado-item:last-child {
+    border-bottom: none;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+    text-align: center;
+    margin-top: 2rem;
+    color: var(--branco);
+    font-size: 1rem;
+    text-shadow: 0 2px 4px var(--sombra);
+}
+
+/* ===== RESPONSIVO ===== */
+@media (max-width: 600px) {
+    .container {
+        padding: 1rem;
+    }
+
+    .logo-text {
+        font-size: 3rem;
+    }
+
+    .logo-img {
+        width: 60px;
+    }
+
+    .card {
+        padding: 1.5rem;
+    }
+
+    .card-header h2 {
+        font-size: 1.6rem;
+    }
+
+    .btn-submit {
+        padding: 0.9rem 1.5rem;
+        font-size: 1rem;
+    }
+}

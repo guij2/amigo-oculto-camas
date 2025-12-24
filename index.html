@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inimigo Oculto - Grupo Camas</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Flocos de neve -->
+    <div class="snowflakes" aria-hidden="true">
+        <div class="snowflake">&#10052;</div>
+        <div class="snowflake">&#10052;</div>
+        <div class="snowflake">&#10052;</div>
+        <div class="snowflake">&#10052;</div>
+        <div class="snowflake">&#10052;</div>
+        <div class="snowflake">&#10052;</div>
+        <div class="snowflake">&#10052;</div>
+        <div class="snowflake">&#10052;</div>
+        <div class="snowflake">&#10052;</div>
+        <div class="snowflake">&#10052;</div>
+    </div>
+
+    <div class="container">
+        <!-- Header com logo -->
+        <header class="header">
+            <div class="logo">
+                <img src="assets/cama-minecraft.png" alt="Cama Minecraft" class="logo-img">
+                <h1 class="logo-text">CAMAS</h1>
+            </div>
+            <p class="subtitle">Inimigo Oculto 2024</p>
+        </header>
+
+        <!-- Card principal -->
+        <main class="card">
+            <div class="card-header">
+                <span class="emoji">&#127873;</span>
+                <h2>Participe do Sorteio!</h2>
+            </div>
+            
+            <p class="description">
+                Inscreva-se para participar do inimigo oculto do grupo. 
+                Quando todos estiverem inscritos, o sorteio será realizado e você 
+                receberá no seu email o nome do seu amigo secreto!
+            </p>
+
+            <form id="inscricao-form" class="form">
+                <div class="form-group">
+                    <label for="nome">Seu Nome</label>
+                    <input 
+                        type="text" 
+                        id="nome" 
+                        name="nome" 
+                        placeholder="Digite seu nome completo"
+                        required
+                        autocomplete="name"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Seu Email</label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        placeholder="Digite seu melhor email"
+                        required
+                        autocomplete="email"
+                    >
+                </div>
+
+                <button type="submit" class="btn-submit" id="btn-submit">
+                    <span class="btn-text">Participar do Sorteio</span>
+                    <span class="btn-loading" style="display: none;">Inscrevendo...</span>
+                </button>
+            </form>
+
+            <!-- Mensagem de sucesso -->
+            <div id="mensagem-sucesso" class="mensagem sucesso" style="display: none;">
+                <span>&#10003;</span>
+                <p>Inscrição realizada com sucesso! Aguarde o sorteio.</p>
+            </div>
+
+            <!-- Mensagem de erro -->
+            <div id="mensagem-erro" class="mensagem erro" style="display: none;">
+                <span>&#10007;</span>
+                <p id="erro-texto">Ocorreu um erro. Tente novamente.</p>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&#127876; Feliz Natal, Camas! &#127876;</p>
+        </footer>
+    </div>
+
+    <!-- Supabase JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <!-- App JS -->
+    <script src="js/app.js"></script>
+</body>
+</html>

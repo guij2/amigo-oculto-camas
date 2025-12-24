@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Inimigo Oculto Camas</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Flocos de neve -->
+    <div class="snowflakes" aria-hidden="true">
+        <div class="snowflake">&#10052;</div>
+        <div class="snowflake">&#10052;</div>
+        <div class="snowflake">&#10052;</div>
+        <div class="snowflake">&#10052;</div>
+        <div class="snowflake">&#10052;</div>
+        <div class="snowflake">&#10052;</div>
+        <div class="snowflake">&#10052;</div>
+        <div class="snowflake">&#10052;</div>
+        <div class="snowflake">&#10052;</div>
+        <div class="snowflake">&#10052;</div>
+    </div>
+
+    <div class="container">
+        <!-- Header com logo -->
+        <header class="header">
+            <div class="logo">
+                <img src="assets/cama-minecraft.png" alt="Cama Minecraft" class="logo-img">
+                <h1 class="logo-text">CAMAS</h1>
+            </div>
+            <p class="subtitle">Painel do Administrador</p>
+        </header>
+
+        <!-- Tela de acesso negado -->
+        <main id="acesso-negado" class="card" style="display: none;">
+            <div class="card-header">
+                <span class="emoji">&#128274;</span>
+                <h2>Acesso Negado</h2>
+            </div>
+            <p class="description">
+                Você não tem permissão para acessar esta página.
+            </p>
+            <a href="index.html" class="btn-submit">Voltar para Inscrição</a>
+        </main>
+
+        <!-- Painel Admin -->
+        <main id="painel-admin" class="card admin-card" style="display: none;">
+            <div class="card-header">
+                <span class="emoji">&#127873;</span>
+                <h2>Gerenciar Sorteio</h2>
+            </div>
+
+            <!-- Lista de participantes -->
+            <section class="participantes-section">
+                <h3>Participantes Inscritos (<span id="total-participantes">0</span>)</h3>
+                <div id="lista-participantes" class="lista-participantes">
+                    <p class="loading">Carregando participantes...</p>
+                </div>
+            </section>
+
+            <!-- Ações -->
+            <section class="acoes-section">
+                <button id="btn-sortear" class="btn-submit btn-sortear" disabled>
+                    <span class="btn-text">&#127922; Realizar Sorteio e Enviar Emails</span>
+                    <span class="btn-loading" style="display: none;">Sorteando e enviando emails...</span>
+                </button>
+                
+                <p class="aviso">
+                    &#9888; Atenção: O sorteio só pode ser realizado uma vez! 
+                    Certifique-se de que todos os participantes estão inscritos.
+                </p>
+            </section>
+
+            <!-- Resultado do sorteio -->
+            <section id="resultado-section" class="resultado-section" style="display: none;">
+                <h3>&#10003; Sorteio Realizado!</h3>
+                <p>Todos os participantes receberam seus emails com o nome do amigo secreto.</p>
+                <div id="resultado-lista" class="resultado-lista"></div>
+            </section>
+
+            <!-- Mensagem de erro -->
+            <div id="mensagem-erro" class="mensagem erro" style="display: none;">
+                <span>&#10007;</span>
+                <p id="erro-texto">Ocorreu um erro.</p>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&#127876; Feliz Natal, Camas! &#127876;</p>
+        </footer>
+    </div>
+
+    <!-- Supabase JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <!-- EmailJS -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <!-- Admin JS -->
+    <script src="js/admin.js"></script>
+</body>
+</html>
