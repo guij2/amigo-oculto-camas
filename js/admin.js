@@ -8,7 +8,7 @@ const EMAILJS_SERVICE_ID = 'service_phx6elk';
 const EMAILJS_TEMPLATE_ID = 'template_y1lcplq';
 
 // Chave secreta do admin
-const CHAVE_SECRETA = 'camas2024';
+const CHAVE_SECRETA = 'camas2025';
 
 // Inicializar Supabase
 const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
