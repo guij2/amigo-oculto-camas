@@ -142,7 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
             try {
                 await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
                     to_name: par.de.nome,
-                    to_email: par.de.email,
+                    to_email: par.de.email.trim(), // Garante que não há espaços extras
                     amigo_sorteado: par.para.nome
                 });
                 
@@ -153,6 +153,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 
             } catch (error) {
                 console.error(`Erro ao enviar email para ${par.de.email}:`, error);
+                
+                // Mensagem de erro mais detalhada no console
+                if (error.status === 422 && error.text.includes("recipients address is empty")) {
+                    console.warn("DICA: Verifique se o campo 'To Email' no template do EmailJS está configurado como {{to_email}}");
+                }
+
                 resultados.push({
                     ...par,
                     sucesso: false,
