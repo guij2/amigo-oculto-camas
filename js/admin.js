@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Inicializar Supabase
-    const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
     // Inicializar EmailJS
     emailjs.init(EMAILJS_PUBLIC_KEY);
@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ===== CARREGAR PARTICIPANTES =====
     async function carregarParticipantes() {
         try {
-            const { data, error } = await supabase
+            const { data, error } = await supabaseClient
                 .from('participantes')
                 .select('*')
                 .order('criado_em', { ascending: true });
@@ -174,7 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
             esconderErro();
             
             // Buscar participantes atualizados
-            const { data: participantes, error } = await supabase
+            const { data: participantes, error } = await supabaseClient
                 .from('participantes')
                 .select('*');
 

@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Inicializar Supabase
-    const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
     // ===== ELEMENTOS DO DOM =====
     const form = document.getElementById('inscricao-form');
@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!validarEmail(email)) throw new Error('Por favor, digite um email válido.');
 
             // Verificar duplicidade
-            const { data: existente, error: erroConsulta } = await supabase
+            const { data: existente, error: erroConsulta } = await supabaseClient
                 .from('participantes')
                 .select('email')
                 .eq('email', email.toLowerCase().trim())
@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             // Inserir
-            const { error } = await supabase
+            const { error } = await supabaseClient
                 .from('participantes')
                 .insert([{
                     nome: nome.trim(),
